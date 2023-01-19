@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import validator from "validator";
 
 const medicineSchema = mongoose.Schema({
     medicineName: {
@@ -52,7 +53,7 @@ const medicineSchema = mongoose.Schema({
     imageURL: [{
         type: String,
         required: true,
-        validate: [valid.isURL, "wrong url, please provide correct url"]
+        validate: [validator.isURL, "wrong url, please provide correct url"]
     }],
     remarks: {
         type: String,
