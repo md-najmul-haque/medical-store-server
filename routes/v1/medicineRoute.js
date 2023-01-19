@@ -1,7 +1,10 @@
 import express from "express";
-import { createMedicineService } from "../../services/medicineService";
+import { createMedicine } from "../../controllers/medicineController.js";
+
 
 
 const medicineRouter = express.Router();
 
-medicineRouter.route('/').post(createMedicineService)
+medicineRouter.route('/').post(createMedicine)
+
+export default medicineRouter;

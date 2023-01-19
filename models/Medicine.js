@@ -15,7 +15,7 @@ const medicineSchema = mongoose.Schema({
         type: String,
         require: true,
         enum: {
-            value: ['Tablet', 'Capsule', 'Drop', 'Syrup', 'Ointment', 'Injection'],
+            values: ['Tablet', 'Capsule', 'Drop', 'Syrup', 'Ointment', 'Injection'],
             message: "Medicine type can't be {VALUE}, must be tablet/capsule/drop/syrup/ointment/injection"
         }
     },

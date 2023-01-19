@@ -1,4 +1,4 @@
-import { createMedicineService } from "../services/medicineService"
+import { createMedicineService } from "../services/medicineService.js"
 
 export const createMedicine = async (req, res, next) => {
 
