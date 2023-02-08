@@ -9,7 +9,7 @@ export const createMedicineService = async (data) => {
 
 export const getMedicineService = async (data) => {
 
-    const medicine = await Medicine.create(data);
+    const medicine = await Medicine.find({});
 
     return medicine
 }
