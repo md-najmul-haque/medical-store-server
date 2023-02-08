@@ -6,7 +6,7 @@ import colors from "colors"
 
 const port = process.env.PORT || 5000
 
-mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.jcndkzu.mongodb.net/?retryWrites=true&w=majority`).then(() => {
+mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.jcndkzu.mongodb.net/medicalStore`).then(() => {
     console.log(`Database connect successfully by mongoose`.yellow.bold)
 })
 

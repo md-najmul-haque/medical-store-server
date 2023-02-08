@@ -8,7 +8,7 @@ import medicineRouter from "./routes/v1/medicineRoute.js";
 app.use(cors())
 app.use(express.json())
 
-app.use('api/v1/medicine', medicineRouter)
+app.use('/api/v1/medicine', medicineRouter)
 
 app.get('/', (req, res) => {
     res.status(200).json({
