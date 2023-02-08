@@ -7,7 +7,7 @@ export const createCustomer = async (req, res, next) => {
         const customer = await createCustomerService(data)
 
         res.status(200).json({
-            status: 'Success',
+            status: 'success',
             message: "customer information saved successfully",
             customerInfo: customer
         })
@@ -15,7 +15,7 @@ export const createCustomer = async (req, res, next) => {
 
     } catch (error) {
         res.status(400).json({
-            status: 'Fail',
+            status: 'fail',
             message: "Fail to save customer info",
         })
     }
@@ -29,7 +29,7 @@ export const getCustomer = async (req, res, next) => {
         const customer = await getCustomerService()
 
         res.status(200).json({
-            status: 'Success',
+            status: 'success',
             message: "Load all customer information successfully",
             customerInfo: customer
         })
@@ -37,7 +37,7 @@ export const getCustomer = async (req, res, next) => {
 
     } catch (error) {
         res.status(400).json({
-            status: 'Fail',
+            status: 'fail',
             message: "Fail to load customer info",
         })
     }

@@ -7,7 +7,7 @@ const customerSchema = mongoose.Schema({
         require: [true, 'please provide customer name'],
         trim: true
     },
-    phoneNumber: [{
+    phoneNumber: {
         type: String,
         required: [true, "Please provide a contact number"],
         validate: {
@@ -15,8 +15,9 @@ const customerSchema = mongoose.Schema({
                 return validator.isMobilePhone(value);
             },
             message: "Please provide a valid phone number",
-        }
-    }],
+        },
+        unique: true,
+    },
     email: {
         type: String,
         validate: [validator.isEmail, "Provide a valid Email"],

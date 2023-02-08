@@ -7,7 +7,7 @@ export const createMedicine = async (req, res, next) => {
         const medicine = await createMedicineService(data)
 
         res.status(200).json({
-            status: 'Success',
+            status: 'success',
             message: "Medicine information saved successfully",
             medicineInfo: medicine
         })
@@ -15,7 +15,7 @@ export const createMedicine = async (req, res, next) => {
 
     } catch (error) {
         res.status(400).json({
-            status: 'Fail',
+            status: 'fail',
             message: "Fail to save medicine info",
             medicineInfo: medicine
         })
@@ -30,7 +30,7 @@ export const getMedicine = async (req, res, next) => {
         const medicine = await getMedicineService()
 
         res.status(200).json({
-            status: 'Success',
+            status: 'success',
             message: "Load all medicine information successfully",
             medicineInfo: medicine
         })
@@ -38,7 +38,7 @@ export const getMedicine = async (req, res, next) => {
 
     } catch (error) {
         res.status(400).json({
-            status: 'Fail',
+            status: 'fail',
             message: "Fail to load medicine info",
             medicineInfo: medicine
         })
