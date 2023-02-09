@@ -46,6 +46,10 @@ const medicineSchema = mongoose.Schema({
         type: Date,
         require: [true, 'Please enter medicine expire date']
     },
+    batchNo: {
+        type: String,
+        require: [true, 'Please enter batch no']
+    },
     price: {
         type: Number,
         require: [true, 'Please enter medicine price']

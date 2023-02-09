@@ -1,3 +1,4 @@
+import { createSupplierService, getSupplierService } from "../services/supplierService.js"
 
 
 export const createSupplier = async (req, res, next) => {
