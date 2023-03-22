@@ -19,21 +19,3 @@ export const createUserService = async (data) => {
     return user
 
 }
-
-export const loginUserService = async (data) => {
-
-    const { email, password } = data
-
-    const salt = await bcrypt.genSalt(12)
-    const hashPassword = await bcrypt.hash(password, salt)
-
-    const doc = new User({
-        name: name,
-        email: email,
-        password: hashPassword
-    })
-
-    const user = await doc.save()
-    return user
-
-}

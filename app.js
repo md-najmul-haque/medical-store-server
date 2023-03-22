@@ -16,7 +16,7 @@ app.use(express.json())
 app.use('/api/v1/medicine', medicineRouter)
 app.use('/api/v1/customer', customerRouter)
 app.use('/api/v1/supplier', supplierRouter)
-app.use('/api/v1/register', userRouter)
+app.use('/api/v1', userRouter)
 
 app.get('/', (req, res) => {
     res.status(200).json({

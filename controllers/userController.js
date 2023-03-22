@@ -72,8 +72,6 @@ export const loginUser = async (req, res) => {
             const user = await User.findOne({ email: email })
 
             if (user) {
-
-
                 const isMatch = await bcrypt.compare(password, user.password)
 
                 if ((user.email === email) && isMatch) {
@@ -87,7 +85,7 @@ export const loginUser = async (req, res) => {
                 } else {
                     return res.status(400).json({
                         status: 'failed',
-                        message: "You are not registered user",
+                        message: "Email and password doesn't matched",
 
                     })
                 }
@@ -109,7 +107,6 @@ export const loginUser = async (req, res) => {
             })
 
         }
-
 
     } catch (error) {
         res.status(400).json({
