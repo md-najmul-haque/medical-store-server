@@ -15,6 +15,11 @@ const userSchema = new mongoose.Schema({
         type: String,
         require: true,
         trim: true,
+    },
+    confirmPassword: {
+        type: String,
+        require: true,
+        trim: true,
     }
 })
 

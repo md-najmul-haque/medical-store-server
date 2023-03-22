@@ -17,7 +17,7 @@ export const createMedicine = async (req, res, next) => {
         res.status(400).json({
             status: 'fail',
             message: "Fail to save medicine info",
-            medicineInfo: medicine
+
         })
     }
 
@@ -40,7 +40,7 @@ export const getMedicine = async (req, res, next) => {
         res.status(400).json({
             status: 'fail',
             message: "Fail to load medicine info",
-            medicineInfo: medicine
+
         })
     }
 
