@@ -84,9 +84,13 @@ export const loginUser = async (req, res) => {
 
                 if ((user.email === email) && isMatch) {
 
+                    //Generate JWT token
+                    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET_KEY, { expiresIn: '1d' })
+
                     return res.status(200).json({
                         status: 'success',
                         message: "Login Success",
+                        token: token
 
                     })
 
