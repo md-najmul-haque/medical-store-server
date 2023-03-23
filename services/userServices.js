@@ -16,6 +16,7 @@ export const createUserService = async (data) => {
     })
 
     const user = await doc.save()
+
     return user
 
 }

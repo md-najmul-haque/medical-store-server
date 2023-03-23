@@ -1,6 +1,8 @@
 import User from "../models/User.js"
 import { createUserService } from "../services/userServices.js"
 import bcrypt from "bcrypt"
+import jwt from "jsonwebtoken"
+
 
 
 
@@ -10,7 +12,7 @@ export const createUser = async (req, res) => {
         const data = req.body
         const { name, email, password, confirmPassword } = data
         const user = await User.findOne({ email: email })
-        console.log(user)
+        // console.log(user)
 
         if (user) {
             return res.status(401).json({
@@ -26,10 +28,16 @@ export const createUser = async (req, res) => {
 
                     const user = await createUserService(data)
 
+                    //Generate JWT token
+                    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET_KEY, { expiresIn: '1d' })
+
+                    console.log(token)
+
                     res.status(200).json({
                         status: 'success',
                         message: "User registration successful",
-                        userInfo: user
+                        userInfo: user,
+                        token: token
                     })
                 }
                 else {
