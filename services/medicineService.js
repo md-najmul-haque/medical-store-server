@@ -13,3 +13,8 @@ export const getMedicineService = async (data) => {
 
     return medicine
 }
+
+export const getDeleteMedicineService = async (id) => {
+    const medicine = await Medicine.findOneAndDelete({ _id: id })
+    return medicine
+}

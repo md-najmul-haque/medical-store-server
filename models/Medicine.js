@@ -54,11 +54,11 @@ const medicineSchema = mongoose.Schema({
         type: Number,
         require: [true, 'Please enter medicine price']
     },
-    imageURL: [{
+    imageURL: {
         type: String,
         required: true,
         validate: [validator.isURL, "wrong url, please provide correct url"]
-    }],
+    },
     remarks: {
         type: String,
     }
