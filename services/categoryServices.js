@@ -10,3 +10,8 @@ export const getCategoryService = async () => {
     const category = await Category.find({});
     return category
 }
+
+export const deleteCategoryService = async (id) => {
+    const category = await Category.findOneAndDelete({ _id: id })
+    return category
+}

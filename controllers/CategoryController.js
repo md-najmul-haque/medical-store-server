@@ -1,4 +1,4 @@
-import { createCategoryService, getCategoryService } from "../services/categoryServices.js"
+import { createCategoryService, deleteCategoryService, getCategoryService } from "../services/categoryServices.js"
 
 
 export const createCategory = async (req, res, next) => {
@@ -29,7 +29,7 @@ export const getCategory = async (req, res, next) => {
 
     try {
 
-        const category = await getCategoryService(data)
+        const category = await getCategoryService()
 
         res.status(200).json({
             status: 'success',
@@ -41,7 +41,32 @@ export const getCategory = async (req, res, next) => {
     } catch (error) {
         res.status(400).json({
             status: 'failed',
-            message: "Failed to save category info",
+            message: "Failed to load category info",
+
+        })
+    }
+
+}
+
+
+
+export const deleteCategory = async (req, res, next) => {
+
+    try {
+        const id = req.params.id
+        const category = await deleteCategoryService(id)
+
+        res.status(200).json({
+            status: 'success',
+            message: "Category information deleted successfully",
+            category: category
+        })
+
+
+    } catch (error) {
+        res.status(400).json({
+            status: 'failed',
+            message: "Failed to delete category info",
 
         })
     }
