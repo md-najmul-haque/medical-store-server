@@ -32,7 +32,7 @@ export const getSupplier = async (req, res, next) => {
         res.status(200).json({
             status: 'success',
             message: "Load all supplier information successfully",
-            supplierInfo: supplier
+            supplier: supplier
         })
 
 
@@ -44,7 +44,6 @@ export const getSupplier = async (req, res, next) => {
     }
 
 }
-
 
 
 export const deleteSupplier = async (req, res, next) => {

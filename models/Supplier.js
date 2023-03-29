@@ -4,7 +4,7 @@ import validator from "validator";
 
 const supplierSchema = mongoose.Schema({
     supplierId: {
-        type: String,
+        type: Number,
         required: [true, "Please provide a id"],
         trim: true,
     },
@@ -14,7 +14,7 @@ const supplierSchema = mongoose.Schema({
         trim: true,
         lowercase: true,
         minLength: [3, "Name must be at least 3 characters."],
-        maxLength: [100, "Name is too large"],
+        maxLength: [50, "Name is too large"],
     },
     supplierPhoneNo: [{
         type: String,
@@ -37,6 +37,20 @@ const supplierSchema = mongoose.Schema({
         type: String,
         required: [true, "Please provide supplier address"],
     },
+    district: {
+        type: String,
+        required: [true, "Please provide supplier district"],
+    },
+    thana: {
+        type: String,
+        required: [true, "Please provide supplier thana"],
+    },
+    zipCode: {
+        type: Number,
+        minLength: [4, "Name must be at least 4 characters."],
+        required: [true, "Please provide zipCode"],
+    },
+
     contactPerson: {
         type: String,
         required: [true, "Please provide a contact person name"],
