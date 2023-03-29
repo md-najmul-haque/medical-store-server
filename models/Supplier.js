@@ -7,12 +7,12 @@ const supplierSchema = mongoose.Schema({
         type: Number,
         required: [true, "Please provide a id"],
         trim: true,
+        unique: [true, "Supplier Id must be unique"],
     },
     supplierName: {
         type: String,
         required: [true, "Please provide a name"],
         trim: true,
-        lowercase: true,
         minLength: [3, "Name must be at least 3 characters."],
         maxLength: [50, "Name is too large"],
     },
@@ -29,8 +29,8 @@ const supplierSchema = mongoose.Schema({
     email: {
         type: String,
         validate: [validator.isEmail, "Provide a valid Email"],
-        trim: true,
         lowercase: true,
+        trim: true,
         unique: true,
     },
     address: {
@@ -55,7 +55,6 @@ const supplierSchema = mongoose.Schema({
         type: String,
         required: [true, "Please provide a contact person name"],
         trim: true,
-        lowercase: true,
         minLength: [3, "Name must be at least 3 characters."],
         maxLength: [100, "Name is too large"],
     },
@@ -71,8 +70,8 @@ const supplierSchema = mongoose.Schema({
     }],
     status: {
         type: String,
-        default: "active",
-        enum: ["active", "inactive"],
+        default: "Active",
+        enum: ["Active", "Inactive"],
     }
 }, {
     timestamps: true
