@@ -25,6 +25,7 @@ const categorySchema = mongoose.Schema({
         type: String,
         default: "active",
         enum: ["active", "inactive"],
+        lowercase: true,
     }
 }, {
     timestamps: true
