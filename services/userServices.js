@@ -20,3 +20,9 @@ export const createUserService = async (data) => {
     return user
 
 }
+
+
+export const getUserService = async () => {
+    const user = await User.find({})
+    return user;
+} 

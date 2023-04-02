@@ -1,8 +1,7 @@
 import User from "../models/User.js"
-import { createUserService } from "../services/userServices.js"
+import { createUserService, getUserService } from "../services/userServices.js"
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
-
 
 
 
@@ -124,6 +123,29 @@ export const loginUser = async (req, res) => {
         res.status(400).json({
             status: 'fail',
             message: "Unable to login",
+
+        })
+    }
+
+}
+
+export const getUser = async (req, res, next) => {
+
+    try {
+
+        const user = await getUserService()
+
+        res.status(200).json({
+            status: 'success',
+            message: "user information loaded successfully",
+            user: user
+        })
+
+
+    } catch (error) {
+        res.status(400).json({
+            status: 'failed',
+            message: "Failed to load user info",
 
         })
     }
