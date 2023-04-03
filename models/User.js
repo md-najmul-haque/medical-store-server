@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import validator from "validator";
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -20,7 +21,16 @@ const userSchema = new mongoose.Schema({
         type: String,
         require: true,
         trim: true,
-    }
+    },
+    role: {
+        type: String,
+        require: true,
+        enum: ["Stuff", "Manager", "Admin"],
+    },
+    image: [{
+        type: String,
+        validate: [validator.isURL, "wrong url, please provide correct url"]
+    }],
 })
 
 const User = mongoose.model('User', userSchema)

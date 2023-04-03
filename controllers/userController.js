@@ -9,7 +9,7 @@ export const createUser = async (req, res) => {
 
     try {
         const data = req.body
-        const { name, email, password, confirmPassword } = data
+        const { name, email, password, confirmPassword, role } = data
         const user = await User.findOne({ email: email })
         // console.log(user)
 
@@ -21,7 +21,7 @@ export const createUser = async (req, res) => {
             })
         }
         else {
-            if (name && email && password && confirmPassword) {
+            if (name && email && password && confirmPassword && role) {
 
                 if (password === confirmPassword) {
 
@@ -50,7 +50,7 @@ export const createUser = async (req, res) => {
             } else {
                 return res.status(400).json({
                     status: 'failed',
-                    message: "All field are required",
+                    message: "All field are required expect image",
 
                 })
             }
