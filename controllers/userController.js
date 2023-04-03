@@ -1,5 +1,5 @@
 import User from "../models/User.js"
-import { createUserService, deleteUserService, getUserService } from "../services/userServices.js"
+import { createUserService, deleteUserService, getUserService, updateUserService } from "../services/userServices.js"
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 
@@ -50,7 +50,7 @@ export const createUser = async (req, res) => {
             } else {
                 return res.status(400).json({
                     status: 'failed',
-                    message: "All field are required expect image",
+                    message: "All field are required",
 
                 })
             }
@@ -150,6 +150,46 @@ export const getUser = async (req, res, next) => {
 
         })
     }
+
+}
+
+// user update(patch) API
+export const UpdateUser = async (req, res) => {
+
+    try {
+        const data = req.body
+        const { name, email, role } = data
+        const id = req.params.id
+
+
+        if (name && email && role) {
+
+            const user = await updateUserService(data, id)
+
+            res.status(200).json({
+                status: 'success',
+                message: "User updated successful",
+                user: user
+
+            })
+        }
+
+        else {
+            return res.status(400).json({
+                status: 'failed',
+                message: "All field are required",
+
+            })
+        }
+
+    } catch (error) {
+        res.status(400).json({
+            status: 'failed',
+            message: "Failed to update user",
+
+        })
+    }
+
 
 }
 

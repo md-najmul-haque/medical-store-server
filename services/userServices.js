@@ -30,6 +30,32 @@ export const getUserService = async () => {
 }
 
 
+export const updateUserService = async (data) => {
+
+    const { id, name, email, role } = data
+
+
+    const user = {
+        name: name,
+        email: email,
+        role: role
+    }
+
+    const result = await User.findByIdAndUpdate(
+        { _id: id },
+        {
+            $set: {
+                ...user
+            }
+        },
+        { upsert: true }
+    )
+
+    return result
+
+}
+
+
 export const deleteUserService = async (id) => {
     const user = await User.findOneAndDelete({ _id: id })
     return user;

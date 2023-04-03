@@ -32,7 +32,10 @@ const userSchema = new mongoose.Schema({
         required: true,
         validate: [validator.isURL, "wrong url, please provide correct url"]
     }],
-})
+},
+    {
+        timestamps: true
+    })
 
 const User = mongoose.model('User', userSchema)
 
