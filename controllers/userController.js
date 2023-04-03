@@ -9,7 +9,7 @@ export const createUser = async (req, res) => {
 
     try {
         const data = req.body
-        const { name, email, password, confirmPassword, role } = data
+        const { name, email, password, confirmPassword, role, image } = data
         const user = await User.findOne({ email: email })
         // console.log(user)
 
@@ -21,22 +21,22 @@ export const createUser = async (req, res) => {
             })
         }
         else {
-            if (name && email && password && confirmPassword && role) {
+            if (name && email && password && confirmPassword && role && image) {
 
                 if (password === confirmPassword) {
 
                     const user = await createUserService(data)
 
                     //Generate JWT token
-                    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET_KEY, { expiresIn: '1d' })
+                    // const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET_KEY, { expiresIn: '1d' })
 
-                    console.log(token)
+                    // console.log(token)
 
                     res.status(200).json({
                         status: 'success',
-                        message: "User registration successful",
-                        userInfo: user,
-                        token: token
+                        message: "User created successful",
+                        user: user
+
                     })
                 }
                 else {

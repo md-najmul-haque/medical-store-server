@@ -4,7 +4,7 @@ import bcrypt from "bcrypt"
 
 export const createUserService = async (data) => {
 
-    const { name, email, password, role } = data
+    const { name, email, password, role, image } = data
 
     const salt = await bcrypt.genSalt(12)
     const hashPassword = await bcrypt.hash(password, salt)
@@ -13,7 +13,8 @@ export const createUserService = async (data) => {
         name: name,
         email: email,
         password: hashPassword,
-        role: role
+        role: role,
+        image: image
     })
 
     const user = await doc.save()

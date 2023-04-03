@@ -29,6 +29,7 @@ const userSchema = new mongoose.Schema({
     },
     image: [{
         type: String,
+        required: true,
         validate: [validator.isURL, "wrong url, please provide correct url"]
     }],
 })
