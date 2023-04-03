@@ -25,4 +25,10 @@ export const createUserService = async (data) => {
 export const getUserService = async () => {
     const user = await User.find({})
     return user;
+}
+
+
+export const deleteUserService = async (id) => {
+    const user = await User.findOneAndDelete({ _id: id })
+    return user;
 } 

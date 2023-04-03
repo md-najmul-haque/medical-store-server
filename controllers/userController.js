@@ -1,10 +1,10 @@
 import User from "../models/User.js"
-import { createUserService, getUserService } from "../services/userServices.js"
+import { createUserService, deleteUserService, getUserService } from "../services/userServices.js"
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 
 
-
+//create user
 export const createUser = async (req, res) => {
 
     try {
@@ -67,7 +67,7 @@ export const createUser = async (req, res) => {
 }
 
 
-
+//login user
 export const loginUser = async (req, res) => {
 
     try {
@@ -129,6 +129,7 @@ export const loginUser = async (req, res) => {
 
 }
 
+//get user
 export const getUser = async (req, res, next) => {
 
     try {
@@ -146,6 +147,30 @@ export const getUser = async (req, res, next) => {
         res.status(400).json({
             status: 'failed',
             message: "Failed to load user info",
+
+        })
+    }
+
+}
+
+//delete user
+export const deleteUser = async (req, res, next) => {
+
+    try {
+        const id = req.params.id
+        const user = await deleteUserService(id)
+
+        res.status(200).json({
+            status: 'success',
+            message: "User deleted successfully",
+
+        })
+
+
+    } catch (error) {
+        res.status(400).json({
+            status: 'failed',
+            message: "Failed to delete user",
 
         })
     }
