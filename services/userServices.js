@@ -30,23 +30,19 @@ export const getUserService = async () => {
 }
 
 
-export const updateUserService = async (data) => {
+export const updateUserService = async (data, id) => {
 
-    const { id, name, email, role } = data
+    const { name, email, role } = data
 
-
-    const user = {
-        name: name,
-        email: email,
-        role: role
-    }
-
-    const result = await User.findByIdAndUpdate(
+    const result = await User.findOneAndUpdate(
         { _id: id },
         {
             $set: {
-                ...user
+                name: name,
+                email: email,
+                role: role
             }
+
         },
         { upsert: true }
     )

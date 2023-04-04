@@ -27,11 +27,11 @@ const userSchema = new mongoose.Schema({
         require: true,
         enum: ["Stuff", "Manager", "Admin"],
     },
-    image: [{
+    image: {
         type: String,
         required: true,
         validate: [validator.isURL, "wrong url, please provide correct url"]
-    }],
+    },
 },
     {
         timestamps: true
