@@ -1,4 +1,4 @@
-import { createSupplierService, deleteSupplierService, getSupplierService } from "../services/supplierService.js"
+import { createSupplierService, deleteSupplierService, getSupplierService, updateSupplierService } from "../services/supplierService.js"
 
 
 export const createSupplier = async (req, res, next) => {
@@ -42,6 +42,33 @@ export const getSupplier = async (req, res, next) => {
             message: "Fail to load supplier info",
         })
     }
+
+}
+
+// user update(patch) API
+export const UpdateSupplier = async (req, res) => {
+
+    try {
+        const data = req.body
+        const id = req.params.id
+
+        const supplier = await updateSupplierService(data, id)
+
+        res.status(200).json({
+            status: 'success',
+            message: "Supplier updated successful",
+            supplier: supplier
+
+        })
+
+    } catch (error) {
+        res.status(400).json({
+            status: 'failed',
+            message: "Failed to update user",
+
+        })
+    }
+
 
 }
 
