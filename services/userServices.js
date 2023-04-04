@@ -29,7 +29,7 @@ export const getUserService = async () => {
     return user;
 }
 
-
+// update user 
 export const updateUserService = async (data, id) => {
 
     const { name, email, role } = data
@@ -41,6 +41,29 @@ export const updateUserService = async (data, id) => {
                 name: name,
                 email: email,
                 role: role
+            }
+
+        },
+        { upsert: true }
+    )
+
+    return result
+
+}
+
+
+//change password
+
+export const updatePasswordService = async (password, id) => {
+
+    const salt = await bcrypt.genSalt(12)
+    const hashPassword = await bcrypt.hash(password, salt)
+
+    const result = await User.findOneAndUpdate(
+        { _id: id },
+        {
+            $set: {
+                password: hashPassword,
             }
 
         },

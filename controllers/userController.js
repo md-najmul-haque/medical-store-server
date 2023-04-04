@@ -1,5 +1,5 @@
 import User from "../models/User.js"
-import { createUserService, deleteUserService, getUserService, updateUserService } from "../services/userServices.js"
+import { createUserService, deleteUserService, getUserService, updatePasswordService, updateUserService } from "../services/userServices.js"
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 
@@ -207,7 +207,7 @@ export const updatePassword = async (req, res) => {
 
             if (password === confirmPassword) {
 
-                const result = await updateUserService(data, id)
+                const result = await updatePasswordService(password, id)
 
                 res.status(200).json({
                     status: 'success',
