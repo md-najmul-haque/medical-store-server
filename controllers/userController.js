@@ -193,6 +193,56 @@ export const UpdateUser = async (req, res) => {
 
 }
 
+
+// update password API
+export const updatePassword = async (req, res) => {
+
+    try {
+        const data = req.body
+        const { password, confirmPassword } = data
+        const id = req.params.id
+
+
+        if (password && confirmPassword) {
+
+            if (password === confirmPassword) {
+
+                const result = await updateUserService(data, id)
+
+                res.status(200).json({
+                    status: 'success',
+                    message: "Password updated successful",
+
+
+                })
+            } else {
+                return res.status(400).json({
+                    status: 'failed',
+                    message: "Password and confirm password doesn't matched",
+
+                })
+            }
+        }
+
+        else {
+            return res.status(400).json({
+                status: 'failed',
+                message: "Both field are required",
+
+            })
+        }
+
+    } catch (error) {
+        res.status(400).json({
+            status: 'failed',
+            message: "Failed to update user",
+
+        })
+    }
+
+
+}
+
 //delete user
 export const deleteUser = async (req, res, next) => {
 
