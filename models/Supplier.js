@@ -14,7 +14,7 @@ const supplierSchema = mongoose.Schema({
         required: [true, "Please provide a name"],
         trim: true,
         minLength: [3, "Name must be at least 3 characters."],
-        maxLength: [50, "Name is too large"],
+        maxLength: [100, "Name is too large"],
     },
     supplierPhoneNo: [{
         type: String,
