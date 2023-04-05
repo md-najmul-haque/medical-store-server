@@ -13,27 +13,12 @@ export const getSupplierService = async () => {
 //Update Supplier 
 export const updateSupplierService = async (data, id) => {
 
-    const { supplierName, supplierPhoneNo, email, address, contactPersonPhoneNo, contactPerson, status, district, zipCode, thana } = data
-
-    const updatedSupplierData = {
-        supplierName: supplierName,
-        supplierPhoneNo: supplierPhoneNo,
-        email: email,
-        address: address,
-        district: district,
-        thana: thana,
-        zipCode: zipCode,
-        contactPerson: contactPerson,
-        contactPersonPhoneNo: contactPersonPhoneNo,
-        status: status,
-    }
-
     const result = await Supplier.findOneAndUpdate(
         { _id: id },
         {
             $set: {
 
-                ...updatedSupplierData
+                ...data
             }
 
         },

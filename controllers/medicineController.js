@@ -1,4 +1,4 @@
-import { createMedicineService, getDeleteMedicineService, getMedicineService } from "../services/medicineService.js"
+import { createMedicineService, getDeleteMedicineService, getMedicineService, updateMedicineService } from "../services/medicineService.js"
 
 export const createMedicine = async (req, res, next) => {
 
@@ -43,6 +43,33 @@ export const getMedicine = async (req, res, next) => {
 
         })
     }
+
+}
+
+// medicine update(patch) API
+export const UpdateMedicine = async (req, res) => {
+
+    try {
+        const data = req.body
+        const id = req.params.id
+
+        const supplier = await updateMedicineService(data, id)
+
+        res.status(200).json({
+            status: 'success',
+            message: "Medicine updated successful",
+            supplier: supplier
+
+        })
+
+    } catch (error) {
+        res.status(400).json({
+            status: 'failed',
+            message: "Failed to update medicine",
+
+        })
+    }
+
 
 }
 

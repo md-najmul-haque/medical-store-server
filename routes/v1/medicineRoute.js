@@ -1,10 +1,10 @@
 import express from "express";
-import { createMedicine, deleteMedicine, getMedicine } from "../../controllers/medicineController.js";
+import { UpdateMedicine, createMedicine, deleteMedicine, getMedicine } from "../../controllers/medicineController.js";
 
 
 const medicineRoute = express.Router();
 
 medicineRoute.route('/').post(createMedicine).get(getMedicine)
-medicineRoute.route('/:id').delete(deleteMedicine)
+medicineRoute.route('/:id').patch(UpdateMedicine).delete(deleteMedicine)
 
 export default medicineRoute;
