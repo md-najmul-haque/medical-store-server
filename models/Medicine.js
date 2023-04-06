@@ -13,11 +13,12 @@ const medicineSchema = mongoose.Schema({
         type: String,
         require: [true, 'Please enter generic name']
     },
-    medicineCategory: {
+    category: {
         type: String,
         require: true,
+        lowercase: true,
         enum: {
-            values: ['Tablet', 'Capsule', 'Drop', 'Syrup', 'Ointment', 'Injection'],
+            values: ['tablet', 'capsule', 'drop', 'syrup', 'ointment', 'injection'],
             message: "Medicine type can't be {VALUE}, must be tablet/capsule/drop/syrup/ointment/injection"
         }
     },
