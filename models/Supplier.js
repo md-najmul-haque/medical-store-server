@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 import validator from "validator";
 
+const { ObjectId } = mongoose.Schema.Types;
+
 
 const supplierSchema = mongoose.Schema({
     supplierId: {
@@ -16,7 +18,7 @@ const supplierSchema = mongoose.Schema({
         minLength: [3, "Name must be at least 3 characters."],
         maxLength: [100, "Name is too large"],
     },
-    supplierPhoneNo: [{
+    supplierPhoneNo: {
         type: String,
         required: [true, "Please provide a supplier contact number"],
         validate: {
@@ -25,7 +27,7 @@ const supplierSchema = mongoose.Schema({
             },
             message: "Please provide a valid phone number",
         }
-    }],
+    },
     email: {
         type: String,
         validate: [validator.isEmail, "Provide a valid Email"],
@@ -33,6 +35,10 @@ const supplierSchema = mongoose.Schema({
         trim: true,
         unique: true,
     },
+    medicines: [{
+        type: ObjectId,
+        ref: "Medicine"
+    }],
     address: {
         type: String,
         required: [true, "Please provide supplier address"],
@@ -58,7 +64,7 @@ const supplierSchema = mongoose.Schema({
         minLength: [3, "Name must be at least 3 characters."],
         maxLength: [100, "Name is too large"],
     },
-    contactPersonPhoneNo: [{
+    contactPersonPhoneNo: {
         type: String,
         required: [true, "Please provide a contact person phone number"],
         validate: {
@@ -67,7 +73,7 @@ const supplierSchema = mongoose.Schema({
             },
             message: "Please provide a valid contact person phone number",
         }
-    }],
+    },
     status: {
         type: String,
         default: "Active",

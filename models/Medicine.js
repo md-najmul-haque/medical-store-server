@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 import validator from "validator";
 
+const { ObjectId } = mongoose.Schema.Types;
+
 const medicineSchema = mongoose.Schema({
     medicineName: {
         type: String,
@@ -19,10 +21,18 @@ const medicineSchema = mongoose.Schema({
             message: "Medicine type can't be {VALUE}, must be tablet/capsule/drop/syrup/ointment/injection"
         }
     },
-    supplierName: {
-        type: String,
-        require: [true, 'Please enter supplier name']
-    },
+    supplier: {
+        supplierName: {
+            type: String,
+            required: true,
+        },
+        id: {
+            type: ObjectId,
+            ref: "Supplier",
+            required: true,
+        }
+    }
+    ,
     brandName: {
         type: String,
         require: [true, 'Please enter brand name']
