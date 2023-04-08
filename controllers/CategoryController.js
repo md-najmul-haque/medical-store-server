@@ -1,4 +1,4 @@
-import { createCategoryService, deleteCategoryService, getCategoryService } from "../services/categoryServices.js"
+import { createCategoryService, deleteCategoryService, getCategoryService, updateCategoryService } from "../services/categoryServices.js"
 
 
 export const createCategory = async (req, res, next) => {
@@ -49,7 +49,32 @@ export const getCategory = async (req, res, next) => {
 
 }
 
+// category update(patch) API
+export const UpdateCategory = async (req, res) => {
 
+    try {
+        const data = req.body
+        const id = req.params.id
+
+        const supplier = await updateCategoryService(data, id)
+
+        res.status(200).json({
+            status: 'success',
+            message: "Category updated successful",
+            supplier: supplier
+
+        })
+
+    } catch (error) {
+        res.status(400).json({
+            status: 'failed',
+            message: "Failed to update cas",
+
+        })
+    }
+
+
+}
 
 export const deleteCategory = async (req, res, next) => {
 

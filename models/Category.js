@@ -8,11 +8,10 @@ const categorySchema = mongoose.Schema({
         required: [true, "Please provide a id"],
         unique: true,
     },
-    category: {
+    categoryName: {
         type: String,
-        unique: [true, "Category must be unique"],
         required: [true, "Please provide a category"],
-        trim: true,
+        unique: true,
         lowercase: true,
         minLength: [3, "Name must be at least 3 characters."],
         maxLength: [20, "Name is too large"],
