@@ -5,6 +5,7 @@ export const createCategory = async (req, res, next) => {
 
     try {
         const data = req.body
+        console.log(data)
         const category = await createCategoryService(data)
 
         res.status(200).json({
